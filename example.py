@@ -17,6 +17,5 @@ def print_2d_table(table: list[list[float]]):
         print(row)
 
 if __name__ == "__main__":
-    #sys.argv.append("empty the directory /Users/philipkrejov/PycharmProjects/arg_gpt/test")
     sys.argv.append("print a random 3x3 table of really random floats")
     run_arg_prompt()
