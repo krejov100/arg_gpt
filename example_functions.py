@@ -25,17 +25,6 @@ def call_commands(commands: list[str]):
         print(command)
 
 
-def print_2d_table(table: list[list[float]]):
-    """
-    Prints a 2D table of floats.
-
-    Arguments:
-        table: A list of lists of floats.
-    """
-    for row in table:
-        print(row)
-
-
 def hello_world(append_string):
     """prints hello world with an appended string
     Arguments:
@@ -44,6 +33,7 @@ def hello_world(append_string):
 
     return "Hello World!" + append_string
 
+
 def spell_word(word: str):
     """spell a word, separating each letter with -
     Arguments:
@@ -51,4 +41,12 @@ def spell_word(word: str):
     """
     return "-".join(word)
 
-arg_gpt.reflect_on_interface()
+
+def get_time_date():
+    """returns the current time and date
+    Arguments:
+        None
+    """
+    import datetime
+    now = datetime.datetime.now()
+    return now.strftime("%Y-%m-%d %H:%M:%S")
