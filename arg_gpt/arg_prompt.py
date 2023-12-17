@@ -12,6 +12,11 @@ log = logging.getLogger(__name__)
 
 _GPT_FUNCTIONS = []
 
+def gpt_func(func):
+    """Decorator for functions that should be exposed to GPT"""
+    _GPT_FUNCTIONS.append(func)
+    return func
+
 def reflect_on_interface():
     # get the name of the calling function
     caller_frame = inspect.currentframe().f_back
