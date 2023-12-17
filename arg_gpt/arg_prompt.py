@@ -21,10 +21,11 @@ def reflect_on_interface():
         print(name)
         _GPT_FUNCTIONS.append(func)
 
-def run_conversation(prompt):
+def run_conversation(prompt, functions=None):
+    if functions is None:
+        functions = _GPT_FUNCTIONS
     client = openai.Client()
     messages = prompts.request_detailed_result() + prompts.remain_functional() + prompts.user_prompt(prompt)
-    functions = _GPT_FUNCTIONS
     while True:
         response = gpt_helpers.call_gpt_with_function(client, functions, messages)
         pprint(response)
