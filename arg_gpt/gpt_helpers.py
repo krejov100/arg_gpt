@@ -1,6 +1,9 @@
+import logging
 import re
 import inspect
 import json
+
+log = logging.getLogger(__name__)
 
 def translate_type(arg_type: inspect.Parameter):
     if arg_type == str:
@@ -86,16 +89,25 @@ def call_gpt(client, messages, model="gpt-3.5-turbo-1106"):
 
 def interpret_response(response, functions):
     func_dict = {func.__name__: func for func in functions}
-    print("{} Choices".format(len(response.choices)))
+    num_choices = len(response.choices)
+    logging.info("%d Choices", num_choices)
     messages = []
     response_message = response.choices[0].message
+
+    logging.info("Response message: %s", response_message)
+
     tool_calls = response_message.tool_calls
     messages.append(response_message)
     if not tool_calls:
         return messages
     for tool_call in tool_calls:
         function_name = tool_call.function.name
-        function_to_call = func_dict[function_name]
+        function_to_call = func_dict.get(function_name)
+
+        if function_to_call is None:
+            logging.warning("Unknown function name: %s", function_name)
+            continue
+
         function_args = json.loads(tool_call.function.arguments)
         function_response = str(function_to_call(**function_args))
         messages.append({
