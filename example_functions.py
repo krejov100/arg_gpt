@@ -1,5 +1,6 @@
 # Functions must be documented using demonstrated style
 import arg_gpt
+import os
 
 
 def get_sky_color(time_of_day: str):
@@ -17,13 +18,14 @@ def get_sky_color(time_of_day: str):
 def call_commands(commands: list[str]):
     """
     Iterates through and calls each command from a list of Unix commands.
+    CAUTION: This function will execute the commands passed to it.
 
     Arguments:
         commands: A list of strings, each representing a Unix command.
     """
     for command in commands:
         print(command)
-
+        os.system(command)
 
 def hello_world(append_string):
     """prints hello world with an appended string
