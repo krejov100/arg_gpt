@@ -26,47 +26,8 @@ def hello_world(append_string):
 
     return "Hello World!" + append_string
 
-def increase_eye_relief_through_dispersion_followed_by_rectification(eye_relief: float):
-    """increases the eye relief by 1
-    Arguments:
-        eye_relief: current eye relief
-    """
-
-    print("eye relief increased by 1")
-
-    return eye_relief + 1
-
-def decrease_eye_relief_through_dispersion_followed_by_rectification(eye_relief: float):
-    """decreases the eye relief by 1
-    Arguments:
-        eye_relief: current eye relief
-    """
-
-    print("eye relief decreased by 1")
-
-    return eye_relief - 1
-
-def increase_pitch_through_distillation_followed_then_rectify(pitch: float):
-    """increases the pitch by 1
-    Arguments:
-        pitch: current pitch
-    """
-
-    print("pitch increased by 1")
-
-    return pitch + 1
-
-def decrease_pitch_through_distillation_followed_then_rectify(pitch: float):
-    """decreases the pitch by 1
-    Arguments:
-        pitch: current pitch
-    """
-    print("pitch decreased by 1")
-
-    return pitch - 1
-
 def spell_word(word: str):
-    """spell a word, seperating each letter with a -
+    """spell a word, separating each letter with -
     Arguments:
         word: word to spell
     """
