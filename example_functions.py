@@ -14,10 +14,31 @@ def get_sky_color(time_of_day: str):
     else:
         return "unknown"
 
+def call_commands(commands: list[str]):
+    """
+    Iterates through and calls each command from a list of Unix commands.
+
+    Arguments:
+        commands: A list of strings, each representing a Unix command.
+    """
+    for command in commands:
+        print(command)
+
+
+def print_2d_table(table: list[list[float]]):
+    """
+    Prints a 2D table of floats.
+
+    Arguments:
+        table: A list of lists of floats.
+    """
+    for row in table:
+        print(row)
+
 
 def hello_world(append_string):
     """prints hello world with an appended string
-    Arguments :
+    Arguments:
         append_string: string to append to hello world
     """
 

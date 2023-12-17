@@ -2,68 +2,8 @@ import logging
 import re
 import inspect
 import json
-
+from .gpt_function import doc_to_dict
 log = logging.getLogger(__name__)
-
-def translate_type(arg_type: inspect.Parameter):
-    if arg_type == str:
-        return "string"
-    elif arg_type == int:
-        return "integer"
-    elif arg_type == float:
-        return "number"
-    elif arg_type == bool:
-        return "boolean"
-    elif arg_type is inspect.Signature.empty:
-        return "null"
-    else:
-        raise ValueError("Unsupported type: {}".format(type))
-
-
-def doc_to_dict(func):
-    if not callable(func):
-        raise ValueError("Provided argument is not a function.")
-
-    doc = inspect.getdoc(func)
-    if not doc:
-        raise ValueError("Function does not have a docstring.")
-
-    # Extracting the first line for description
-    lines = doc.split('\n')
-    description = lines[0].strip()
-
-    # Parsing the arguments section
-    args_section = re.search(r'Arguments\s*:(.*)', doc, re.DOTALL)
-    if not args_section:
-        raise ValueError("Arguments section not found in the docstring.")
-
-    args_text = args_section.group(1).strip()
-    params_match = re.findall(r'(\w+):\s*(.+)', args_text)
-
-    func_dict = {
-        "function": {
-            "name": func.__name__,
-            "description": description,
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": [],
-            }
-        }
-    }
-
-    for param, desc in params_match:
-        arg_type = inspect.signature(func).parameters[param].annotation
-        # Assuming all parameters are strings for simplicity
-        func_dict["function"]["parameters"]["properties"][param] = {
-            # use reflection to get the type of the parameter
-            "type": translate_type(arg_type),
-            "description": desc.strip()
-        }
-        # Assuming all parameters are required
-        func_dict["function"]["parameters"]["required"].append(param)
-
-    return func_dict
 
 
 def call_gpt_with_function(client, functions, messages, model="gpt-3.5-turbo-1106"):
