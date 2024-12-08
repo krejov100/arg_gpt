@@ -1,4 +1,0 @@
-openai
-typer
-python-dotenv
-setuptools

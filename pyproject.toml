@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "arg-gpt"
+version = "0.0.1"
+description = "A package to help you build a GPT interface for your python code"
+authors = ["Philip Krejov"]
+readme = "README.md"
+packages = [{include = "arg_gpt"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+openai = "*"
+typer = "*"
+python-dotenv = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
