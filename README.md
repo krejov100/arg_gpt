@@ -35,9 +35,29 @@ def calculate_sum(a: int, b: int) -> int:
 
 ## Examples
 
-For detailed usage examples, check out the [examples](./examples) directory:
-- [Basic Command Line Interface](./examples/example_cmd.py)
-- [Groq Integration](./examples/example_groq.py)
+The package includes two example implementations in the [examples](./examples) directory:
+
+### OpenAI Example
+Located at [examples/example_cmd.py](./examples/example_cmd.py), this example demonstrates using arg-gpt with OpenAI's API.
+
+To run this example:
+1. Ensure you have set `OPENAI_API_KEY` in your `.env` file
+2. Run the example:
+```bash
+python examples/example_cmd.py "your prompt here"
+```
+
+### Groq Example
+Located at [examples/example_groq.py](./examples/example_groq.py), this example shows integration with Groq's LLM API.
+
+To run this example:
+1. Ensure you have set `GROQ_API_KEY` in your `.env` file
+2. Run the example:
+```bash
+python examples/example_groq.py "your prompt here"
+```
+
+Both examples use a CLI interface where you can provide natural language prompts to interact with the registered functions. The examples will process your prompt and execute the appropriate functions based on your request.
 
 ## License
 

@@ -49,3 +49,7 @@ def run_conversation(prompt: str, functions: list):
 def run_arg_prompt():
     """CLI entry point that uses typer like the OpenAI example"""
     typer.run(lambda x: run_conversation(x, functions=get_ai_functions()))
+
+if __name__ == "__main__":
+    run_arg_prompt()
+    

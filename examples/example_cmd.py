@@ -43,3 +43,6 @@ def calculate_sum(a: int, b: int) -> int:
 
 def run_arg_prompt():
     typer.run(lambda x : run_conversation(x, functions=get_ai_functions()))
+
+if __name__ == "__main__":
+    run_arg_prompt()
