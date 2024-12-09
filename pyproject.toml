@@ -11,6 +11,14 @@ python = "^3.8"
 openai = "*"
 typer = "*"
 python-dotenv = "*"
+groq = "*"
+
+[tool.poetry.scripts]
+arg-gpt = "examples.example_cmd:run_arg_prompt"
+arg-gpt-groq = "examples.example_groq:run_arg_prompt"
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "5.0.0"
 
 [build-system]
 requires = ["poetry-core"]
